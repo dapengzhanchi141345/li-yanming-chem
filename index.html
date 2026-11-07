@@ -123,6 +123,12 @@ CO₂系数 <input id="a3" value="3" style="width:50px"> H₂O系数 <input id="
 <div style="background:#fffbe6;border-left:4px solid #f5a623;padding:10px;margin:12px 0;font-size:14px">📅 2026-10-26 升级 · 【计算+2026-10-26】摩尔质量 M=m/n；气体摩尔体积 22.4L/mol 只在标况(0℃101kPa)用</div>
 
 <div style="background:#fffbe6;border-left:4px solid #f5a623;padding:10px;margin:12px 0;font-size:14px">📅 2026-10-27 升级 · 【性质+2026-10-27】Fe 在常温浓硫酸/浓硝酸中钝化(不是不反应，是表面成氧化膜)</div>
+
+<div style="background:#fffbe6;border-left:4px solid #f5a623;padding:10px;margin:12px 0;font-size:14px">📅 2026-11-02 升级 · 【鉴别+2026-11-02】鉴别 Cl⁻ 用 AgNO₃+稀 HNO₃ 白沉淀；SO₄²⁻ 用 BaCl₂+稀 HNO₃</div>
+
+<div style="background:#fffbe6;border-left:4px solid #f5a623;padding:10px;margin:12px 0;font-size:14px">📅 2026-11-03 升级 · 【金属+2026-11-03】铝热反应 Fe₂O₃+2Al=Al₂O₃+2Fe(点燃)，用于焊接铁轨</div>
+
+<div style="background:#fffbe6;border-left:4px solid #f5a623;padding:10px;margin:12px 0;font-size:14px">📅 2026-11-06 升级 · 【离子+2026-11-06】铝两性：Al(OH)₃ 溶于强酸也溶于强碱；Al³⁺+3OH⁻=Al(OH)₃↓</div>
 </footer>
 
 <script>
@@ -196,29 +202,71 @@ const EL=[
  ["Zn","30 锌","65.38","过渡"],
 ];
 document.getElementById("tGrid").innerHTML="<table><tr><th>符号</th><th>原子序数</th><th>相对原子质量</th><th>族</th></tr>"+EL.map(e=>`<tr><td>${e[0]}</td><td>${e[1]}</td><td>${e[2]}</td><td>${e[3]}</td></tr>`).join("")+"</table>";
+
+// 本地题库(离线·零外链): 供 agent 面板关键词匹配; 条目=一行式可核查考点
+window.AGENT_KB=[
+ {q:"配平 4P+5O₂→2P₂O₅",a:"4P + 5O₂ =点燃= 2P₂O₅。P: 0→+5(4 个 P 共失 20e⁻); O: 0→-2(10 个 O 共得 20e⁻), 得失电子相等; 原子核对: P 4=4, O 10=10, 已配平。"},
+ {q:"CO₂ 通入过量 NaOH 的产物",a:"CO₂ 通入 NaOH: 若 NaOH 过量→CO₂+2NaOH=Na₂CO₃+H₂O(生成碳酸钠); 若 CO₂ 过量→CO₂+NaOH=NaHCO₃(生成碳酸氢钠)。量定反应: 先判断哪一方过量再写方程式。"},
+ {q:"一道实验探究题设计",a:"实验探究三步: ①提出问题与假设(如'过氧化钠与CO₂反应的产物是什么'); ②设计对照(明确探究变量、控制变量、可观察现象与产物检验); ③结论与延伸(现象→产物→改进)。示例: 验证 Na₂O₂+CO₂→O₂, 用干燥管通 CO₂, 出口放带火星木条复燃, 再用澄清石灰水检验 CO₂ 是否耗尽。"},
+ {q:"如何鉴别 CO₂、O₂、H₂ 三种气体",a:"O₂: 带火星木条复燃; H₂: 点燃呈淡蓝色火焰, 干冷小烧杯内壁有水珠, 石灰水不浑; CO₂: 澄清石灰水变浑浊。也可用燃着木条同时验: 烧得更旺=O₂, 气体被点燃=H₂, 火焰熄灭=CO₂。"},
+ {q:"稀释浓硫酸为什么酸入水",a:"浓硫酸密度(约1.84g/mL)大于水且遇水放出大量热; 水入酸: 水浮在酸面局部沸腾, 酸液飞溅伤人。正确操作: 沿玻璃棒缓慢把浓硫酸倒入水中, 边倒边搅拌散热, 口诀'酸入水、沿器壁、慢慢倒、不断搅'。"},
+ {q:"如何检验溶液中的 Cl⁻ 和 SO₄²⁻",a:"Cl⁻: 加 AgNO₃ 与稀 HNO₃, 白色沉淀(AgCl, 不溶于稀 HNO₃); SO₄²⁻: 加 BaCl₂ 与稀 HNO₃, 白色沉淀(BaSO₄)。两者共存: 先加过量 Ba(NO₃)₂ 除 SO₄²⁻(生成 BaSO₄), 过滤后滤液再加 AgNO₃+稀 HNO₃ 检 Cl⁻。"},
+ {q:"金属活动性顺序表及推论",a:"K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au。推论: 排 H 前金属能置换稀酸中 H₂; 排前置换后(盐溶液); 但 K/Ca/Na 遇水先与水反应, 不能从盐溶液置换其他金属。"},
+ {q:"NaHCO₃ 与 Na₂CO₃ 的鉴别",a:"加稀盐酸: 均冒泡; 定量/热稳定性: NaHCO₃ 受热分解(2NaHCO₃ =△= Na₂CO₃+H₂O+CO₂↑), Na₂CO₃ 不分解。加 CaCl₂ 溶液: 白色沉淀(CaCO₃)的是 Na₂CO₃, 无明显沉淀的是 NaHCO₃。"},
+ {q:"苯与溴水为什么分层褪色",a:"苯不与溴水反应, 但萃取溴: 振荡静置分层, 上层(苯层, 密度小于水)呈橙红色, 水层褪色。与烯烃的加成褪色(溶液整体变无色、不分层)区分开。"},
+ {q:"原电池负极电极反应(锌铜稀硫酸)",a:"Zn-Cu-稀H₂SO₄: 负极 Zn 失电子被氧化 Zn-2e⁻=Zn²⁺; 正极 Cu 上 2H⁺+2e⁻=H₂↑; 电子沿导线由负极(活泼金属)流向正极, 电流方向相反。负极金属溶解, 正极产生气泡。"},
+ {q:"乙醇乙醛乙酸互化",a:"乙醇—催化氧化→乙醛—氧化→乙酸; 乙酸+乙醇 ⇌(浓H₂SO₄, 加热) 乙酸乙酯+水(酯化可逆, 加过量乙醇或边反应边移走酯可提高转化率)。区别乙烯与乙醇: 使 Br₂ 水/酸性 KMnO₄ 褪色的是乙烯(加成/氧化), 乙醇不能。"},
+ {q:"乙烯乙炔苯性质对比",a:"乙烯: 加成(聚合制聚乙烯)、使 Br₂ 水褪色; 乙炔: 使 Br₂ 水/酸性 KMnO₄ 褪色, 燃烧黑烟(碳含量约92%); 苯: 不使酸性 KMnO₄ 褪色, 与 H₂ 催化加成生成环己烷, 能发生取代(硝化/磺化/卤代), 与溴水混合是萃取褪色不是反应。"},
+ {q:"纤维灼烧鉴别蛋白质",a:"蛋白质纤维(毛、蚕丝)灼烧有羽毛焦臭; 合成纤维(涤纶、锦纶)灼烧有硬块; 纤维素(棉、麻)灼烧像烧纸。天然橡胶主要成分是聚异戊二烯, 聚乙烯/涤纶属有机合成材料。"},
+ {q:"淀粉纤维素葡萄糖水解",a:"淀粉/纤维素分子式 (C₆H₁₀O₅)ₙ(高中阶段按同分异构处理), 酸或酶催化水解终产物均为葡萄糖; 碘变蓝只针对淀粉; 纤维素硝酸酯即无烟火药。"},
+ {q:"物质的量摩尔质量粒子数互换",a:"n = m/M = N/Nₐ = V(标况)/22.4; Nₐ≈6.02×10²³ mol⁻¹; Vm=22.4 L/mol 仅限 0℃、101 kPa; 摩尔质量数值上等于相对分子(原子)质量(单位 g/mol)。"},
+ {q:"质量分数与物质的量浓度互换",a:"w=m(溶质)/m(溶液); c=n/V(L); 换算 c=1000ρw/M(ρ 单位 g/mL); 稀释 c₁V₁=c₂V₂; 同一溶质混合 c=(n₁+n₂)/(V₁+V₂)(体积近似加和)。"},
+ {q:"同温同压气体体积比",a:"同温同压下气体体积比=物质的量比(阿伏加德罗定律)。计算: 0.1 mol C₂H₆ 完全燃烧需 O₂ 0.35 mol(2C₂H₆+7O₂=点燃=4CO₂+6H₂O), 标况 0.35×22.4=7.84 L。"},
+ {q:"混合气体平均摩尔质量",a:"M̄=Σm/Σn=(M₁n₁+M₂n₂)/(n₁+n₂); 例: O₂ 与 H₂ 按物质的量 1:1 混合, M̄=(32+2)/2=17 g/mol; 密度比=摩尔质量比(同温同压)。"},
+ {q:"氧化还原配平得失电子",a:"四步: 一标价(找变价元素) 二等电子(得失电子总数相等, 定氧化剂/还原剂系数) 三配其他原子 四检查(原子与电荷)。例: Fe+4HNO₃(稀)=Fe(NO₃)₃+NO↑+2H₂O(N +5→+2 得3e⁻, Fe 0→+3 失3e⁻)。"},
+ {q:"离子方程式书写",a:"强电解质拆(可溶强酸强碱盐), 弱电解质/气体/沉淀/氧化物保留式; 例 NaHCO₃+HCl: HCO₃⁻+H⁺=H₂O+CO₂↑; Ba(OH)₂+2NaHSO₄(恰好中和): Ba²⁺+2OH⁻+2H⁺+SO₄²⁻=BaSO₄↓+2H₂O。"},
+ {q:"离子大量共存判断",a:"不能大量共存: ①生成沉淀(Ag⁺+Cl⁻, Ba²⁺+SO₄²⁻, Ca²⁺+CO₃²⁻) ②生成气体(H⁺+CO₃²⁻/HCO₃⁻, OH⁻+NH₄⁺) ③生成弱电解质(H⁺+OH⁻) ④氧化还原(Fe³⁺+I⁻, 酸性 MnO₄⁻+Cl⁻) ⑤双水解(Al³⁺+HCO₃⁻/CO₃²⁻)。"},
+ {q:"官能团性质速查",a:"碳碳双键: 加成、被酸性 KMnO₄ 氧化; 羟基: 酯化、催化氧化、与 Na 置换; 醛基: 银镜反应/斐林试剂; 羧基: 酯化、与碱/碳酸盐反应; 酚羟基: 与 FeCl₃ 显紫色、易被氧化。"}
+];
 </script>
 
 <div id="agent-panel" style="margin:20px auto;max-width:720px;border:2px solid #4a90d9;border-radius:12px;padding:16px;background:#f7fbff;font-family:system-ui">
-  <h3 style="margin:0 0 8px;color:#2c5d8f">🤖 炼金士·化学专家团 · 智能体问答</h3>
-  <p style="font-size:13px;color:#555;margin:0 0 10px">点预设或直接输入问题，调用 炼金士·化学专家团 的学科能力实时解答（在线时）。离线时显示"在线 AI 暂不可用，看站内题库"。</p>
+  <h3 style="margin:0 0 8px;color:#2c5d8f">🤖 炼金士·化学专家团 · 智能体问答（本地题库模式）</h3>
+  <p style="font-size:13px;color:#555;margin:0 0 10px">本地题库模式（离线·零外链）：关键词匹配本站本地题库作答。在线 AI 问答待李老师定 key 策略后统一开通。</p>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px"><button style="padding:6px 10px;border-radius:8px;border:1px solid #888;background:#fff;color:#333;cursor:pointer;font-size:12px" onclick="agentAsk('配平 4P+5O₂→2P₂O₅')">配平 4P+5O₂→2P₂O₅</button><button style="padding:6px 10px;border-radius:8px;border:1px solid #888;background:#fff;color:#333;cursor:pointer;font-size:12px" onclick="agentAsk('CO₂ 通入过量 NaOH 产物')">CO₂ 通入过量 NaOH 产物</button><button style="padding:6px 10px;border-radius:8px;border:1px solid #888;background:#fff;color:#333;cursor:pointer;font-size:12px" onclick="agentAsk('一道实验探究题设计')">一道实验探究题设计</button>
     <button style="padding:6px 12px;border-radius:8px;border:1px solid #4a90d9;background:#4a90d9;color:#fff;cursor:pointer" onclick="agentAsk('')">问 炼金士·化学专家团</button>
   </div>
-  <textarea id="agent-q" placeholder="输入问题，点按钮问 炼金士·化学专家团..." style="width:100%;height:60px;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px"></textarea>
-  <button style="margin-top:8px;padding:8px 16px;border-radius:8px;border:none;background:#2c8a3d;color:#fff;cursor:pointer;font-size:14px" onclick="agentAsk(document.getElementById('agent-q').value)">提问</button>
+  <textarea id="agent-q" placeholder="输入问题，匹配 炼金士·化学专家团 本地题库..." style="width:100%;height:60px;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px;box-sizing:border-box"></textarea>
+  <button style="margin-top:8px;padding:8px 16px;border-radius:8px;border:none;background:#2c8a3d;color:#fff;cursor:pointer;font-size:14px" onclick="agentAsk(document.getElementById('agent-q').value)">匹配本地题库</button>
   <div id="agent-a" style="margin-top:12px;padding:12px;background:#fff;border-left:4px solid #2c8a3d;border-radius:6px;font-size:14px;min-height:40px;white-space:pre-wrap;color:#333">（等待回答）</div>
   <script>
-  var AGENT_API = {{base:"https://api.agnes-k2.com/v1", key:"", model:"agnes-flash"}};
-  function agentAsk(q){{
-    if(!q) q=document.getElementById('agent-q').value;
-    if(!q){{document.getElementById('agent-a').textContent='请输入问题';return;}}
-    var a=document.getElementById('agent-a'); a.textContent='\u23F3 炼金士·化学专家团 思考中...';
-    fetch(AGENT_API.base+'/chat/completions',{{method:'POST',headers:{{'Content-Type':'application/json','Authorization':'Bearer '+AGENT_API.key}},
-      body:JSON.stringify({{model:AGENT_API.model,messages:[{{role:'system',content:'你是炼金士·化学专家团，全学段化学含实验探究。回答要专业、准确、可核查，口语化带大白话。'}},{{role:'user',content:q}}],temperature:0.3}})
-    .then(function(r){{return r.json();}}).then(function(d){{
-      a.textContent=(d.choices&&d.choices[0]&&d.choices[0].message)?d.choices[0].message.content:'（无返回）';
-    }}).catch(function(e){{a.textContent='\u26A0 在线 AI 暂不可用('+e.message+')，看站内题库或稍后再试。';}});
-  }}
+  // 本地题库模式: 离线·零外链·无 key。在线(key 注入)待李老师定 key 策略后统一切, 此处 AGENT_MODE 为切换点。
+  var AGENT_MODE="local";
+  var AGENT_KB=(typeof window.AGENT_KB==="object"&&window.AGENT_KB)?window.AGENT_KB:[];
+  var LOCAL_TIPS=["配平从变价最大元素入手; 氧化还原先配电子转移再配电荷原子。", "实验设计先明各试剂目的与对照; 性质检验按'现象→结论'成对。"];
+  function _kbTokens(q){
+    var t=[];
+    (q.toLowerCase().match(/[a-z0-9]+/g)||[]).forEach(function(x){t.push(x);});
+    q.replace(/[^\u4e00-\u9fff]/g,'').split('').forEach(function(c){t.push(c);});
+    return t;
+  }
+  function agentAsk(q){
+    if(!q)q=document.getElementById('agent-q').value;
+    if(!q){document.getElementById('agent-a').textContent='请输入问题';return;}
+    document.getElementById('agent-q').value=q;
+    var a=document.getElementById('agent-a');
+    var uniq=Array.from(new Set(_kbTokens(q)));
+    var hits=AGENT_KB.map(function(it){
+      var hay=((it.q||"")+" "+(it.a||"")).toLowerCase();
+      var n=uniq.filter(function(t){return hay.indexOf(t)>-1;}).length;
+      return {s:n,it:it};
+    }).filter(function(x){return x.s>=Math.min(uniq.length,2);}).sort(function(x,y){return y.s-x.s;}).slice(0,3);
+    if(hits.length){
+      a.textContent="\u{1F4D6} 本地题库 · 离线（炼金士·化学专家团 本地条目）\n\n"+hits.map(function(h){return "Q: "+h.it.q+"\nA: "+h.it.a;}).join("\n\n")+"\n\n（在线 AI 问答待李老师定 key 策略后开通）";
+    } else {
+      a.textContent="\u26A0\uFE0F 本地题库模式（离线）：未匹配到本地条目。在线 AI 问答待李老师定 key 策略后开通。\n学习提示：\n- "+LOCAL_TIPS.join("\n- ")+"\n并见站内【题库/知识】模块。";
+    }
+  }
   </script>
 </div>
 </body></html>
